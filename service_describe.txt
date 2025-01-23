@@ -1,0 +1,17 @@
+Name:                     web-service
+Namespace:                web
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 app.kubernetes.io/name=web
+Type:                     NodePort
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       192.168.194.145
+IPs:                      192.168.194.145
+Port:                     http-backend  8081/TCP
+TargetPort:               http-backend/TCP
+NodePort:                 http-backend  30118/TCP
+Endpoints:                192.168.194.8:8000,192.168.194.9:8000
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>

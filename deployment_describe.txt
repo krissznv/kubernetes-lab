@@ -1,0 +1,37 @@
+Name:                   web
+Namespace:              web
+CreationTimestamp:      Thu, 23 Jan 2025 19:45:58 +0700
+Labels:                 <none>
+Annotations:            deployment.kubernetes.io/revision: 2
+Selector:               app.kubernetes.io/name=web
+Replicas:               2 desired | 2 updated | 2 total | 2 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  app.kubernetes.io/name=web
+  Containers:
+   web:
+    Image:         web:1.0.0
+    Port:          8000/TCP
+    Host Port:     0/TCP
+    Liveness:      http-get http://:8000/hello.html delay=20s timeout=1s period=10s #success=1 #failure=5
+    Environment:   <none>
+    Mounts:        <none>
+  Volumes:         <none>
+  Node-Selectors:  <none>
+  Tolerations:     <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Progressing    True    NewReplicaSetAvailable
+  Available      True    MinimumReplicasAvailable
+OldReplicaSets:  web-76b9c767d7 (0/0 replicas created)
+NewReplicaSet:   web-8476bf899b (2/2 replicas created)
+Events:
+  Type    Reason             Age    From                   Message
+  ----    ------             ----   ----                   -------
+  Normal  ScalingReplicaSet  15m    deployment-controller  Scaled up replica set web-76b9c767d7 to 1
+  Normal  ScalingReplicaSet  3m7s   deployment-controller  Scaled up replica set web-8476bf899b to 1
+  Normal  ScalingReplicaSet  3m5s   deployment-controller  Scaled down replica set web-76b9c767d7 to 0 from 1
+  Normal  ScalingReplicaSet  2m39s  deployment-controller  Scaled up replica set web-8476bf899b to 2 from 1
